@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome! | Super Sprinter 3000</title>
+    </head>
+    <body>
+        <h1><strong>Super Sprinter 300</strong></h1>
+        <h4><a href="/story">Add new user story</a></h4>
+        <table>
+            <tr>
+                <th><strong>ID</th>
+                <th><strong>Story Title</th>
+                <th><strong>User Story</th>
+                <th><strong>Acceptance Criteria</th>
+                <th><strong>Business Value</th>
+                <th><strong>Estimation</th>
+                <th><strong>Status</th>
+            </tr>
+                {% for id in range(0, long) %}
+                    <tr>
+                        <td>{{stories_list[id][0]}}</td>
+                        <td><a href="/story/{{stories_list[id][0]}}">{{stories_list[id][1]}}</a></td>
+                        <td>{{stories_list[id][2]}}</td>
+                        <td>{{stories_list[id][3]}}</td>
+                        <td>{{stories_list[id][4]}} point</td>
+                        <td>{{stories_list[id][5]}} h</td>
+                        <td>{{stories_list[id][6]}}</td>
+                    </tr>
+                {% endfor %}
+            </tr>
+        </table>
+    </body>
+</html>

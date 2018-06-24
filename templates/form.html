@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            {% if  not id %}
+    Add User Story | Super Sprinter 300
+    {% else %}
+    Update User Story | Super Sprinter 3000
+    {% endif %}
+        </title>
+    </head>
+    <body>
+    <center>
+    <h1>{{ "Add User Story" if not id else " Update User story" }} </h1>
+
+    {% if  not id %}
+    <form action ="/story" method ="POST">
+    {% else %}
+    <form action ="/story/{{ id }}" method ="POST">
+    {% endif %}
+
+        <p><label for="title">Story Title</label> <br>
+        <input name = "story_title" rows="1" cols="60" value="{{ stories_list[id][1] if id else '' }}"></p>
+        <br>
+         <p><label for="story">User Story</label> <br>
+             <textarea name = "user_story" rows="3" cols="80">{{ stories_list[id][2] if id else '' }}</textarea></p>
+        <br>
+        <p><label for="criteria">Acceptance Criteria</label> <br>
+            <textarea name = "acceptcrit" rows="5" cols="80">{{ stories_list[id][3] if id else '' }}</textarea></p>
+        <br>
+        <p><label for="value">Buisness Value</label> <br>
+        <input name="bussines_value" type="number" min="100" max="1500" step="100" value="{{ stories_list[id][4] if id else '1000' }}"></pr>
+        <br>
+        <p><label for="estim">Estimation time (h)</label> <br>
+        <input name="estimation" type="number" min="0.5" max="40" step="0.5" value="{{ stories_list[id][5] if id else '2.5'}}"></p>
+        <br>
+        <p><label for="status">Status</label> <br>
+        <select name ="status" >
+            <option {{ "selected" if id and stories_list[id][6] == 'Planning' else '' }}>Planning</option>
+            <option {{ "selected" if id and stories_list[id][6] == 'TODO' else '' }}>Todo</option>
+            <option {{ "selected" if id and stories_list[id][6] == 'In Progress' else '' }}>In Progress</option>
+            <option {{ "selected" if id and stories_list[id][6] == 'Review' else '' }}>Review</option>
+            <option {{ "selected" if id and stories_list[id][6] == 'Done' else '' }}>Done</option>
+        </select><br>
+        <br>
+        <br>
+        <button type="submit">{{ "Update" if id else "Create"}}</button>
+
+    </form>
+    </center>
+</body>
+</html>
